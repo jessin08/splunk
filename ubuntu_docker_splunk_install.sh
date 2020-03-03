@@ -16,4 +16,5 @@ echo -e "\n---------------------------------\nremoving splunk installation file\
 rm -rf ../splunk-8.0.2-a7f645ddaf91-Linux-x86_64.tgz
 echo "\n----------------------------------\nAutostart script for the container\n----------------------------------\n"
 echo -e '#!/bin/sh\n/opt/splunk/bin/splunk start' > /etc/init.d/startupscript.sh
+chmod +x /etc/init.d/startupscript.sh
 
