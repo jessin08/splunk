@@ -1,4 +1,5 @@
 #!/bin/sh
+#Run this script on ubuntu: wget -O - https://raw.githubusercontent.com/jessin08/splunk/master/ubuntu_docker_splunk_install.sh | bash
 #docker command: docker run -d -p 8000:8000 --name ubuntu ubuntu
 #docker command: docker exec -it ubuntu
 
