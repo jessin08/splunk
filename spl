@@ -1,0 +1,1 @@
+host="pochost1" domain=* usr=* | table _time usr domain type | rename _time AS TIME
