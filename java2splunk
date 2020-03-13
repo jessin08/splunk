@@ -1,0 +1,35 @@
+Reference: https://dzone.com/articles/java-applications-log-message-analytics-using-splu
+
+1)Place the jar http://download.splunk.com/misc/sdk/java/splunk-sdk-java-1.6.2.jar in application classpath
+    2) class to connect to splunk
+    importcom.splunk.*;
+    public class SplunkTest {
+     public static void main(String[] args) {
+      // A second way to create a new Service object and log in
+      Service service = new Service("localhost", 8089);
+      service.login("admin", "changeme");
+      // Print installed apps to the console to verify login
+      for (Application app: service.getApplications().values()) {
+       System.out.println(app.getName());
+      }
+     }
+    }
+
+Class that uses token instead of credentials for subsequent connects after login
+--------------------------------------------------------------------------------
+importcom.splunk.*;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+public class SplunkTest {
+ public static void main(String[] args) {
+  Service service = new Service("localhost", 8089);
+  String credentials = "admin:changeme";
+  String basicAuthHeader = Base64.encode(credentials.getBytes());
+  service.setToken("Basic " + basicAuthHeader);
+  // Print the session token
+  System.out.println("Your session token: " + service.getToken());
+  // Print installed apps to the console to verify login
+  for (Application app: service.getApplications().values()) {
+   System.out.println(app.getName());
+  }
+ }
+}
